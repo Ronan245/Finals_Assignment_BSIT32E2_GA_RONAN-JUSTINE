@@ -1,9 +1,20 @@
+import { useTheme } from "../context/ThemeContext";
+
 type HeaderProps = {
   title: string;
   subtitle: string;
 };
 
 export default function Header({ title, subtitle }: HeaderProps) {
+  const { theme } = useTheme();
+
+  const isDark = theme === "dark";
+  const isOcean = theme === "ocean";
+
+  const titleColor = isDark || isOcean ? "#f8fafc" : "#0f172a";
+  const subtitleColor = isDark || isOcean ? "#cbd5e1" : "#475569";
+  const accentColor = isOcean ? "#7dd3fc" : "#3b82f6";
+
   return (
     <header
       style={{
@@ -14,7 +25,7 @@ export default function Header({ title, subtitle }: HeaderProps) {
       <p
         style={{
           margin: "0 0 10px",
-          color: "#3b82f6",
+          color: accentColor,
           fontWeight: 700,
           letterSpacing: "0.08em",
           textTransform: "uppercase",
@@ -28,7 +39,7 @@ export default function Header({ title, subtitle }: HeaderProps) {
         style={{
           fontSize: "clamp(2rem, 4vw, 3.2rem)",
           margin: "0 0 12px",
-          color: "#f8fafc",
+          color: titleColor,
         }}
       >
         {title}
@@ -38,7 +49,7 @@ export default function Header({ title, subtitle }: HeaderProps) {
         style={{
           maxWidth: "700px",
           margin: "0 auto",
-          color: "#cbd5e1",
+          color: subtitleColor,
           fontSize: "1.05rem",
           lineHeight: 1.7,
         }}

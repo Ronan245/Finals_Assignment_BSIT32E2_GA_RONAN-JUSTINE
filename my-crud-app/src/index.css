@@ -154,3 +154,48 @@ textarea,
 select {
   font: inherit;
 }
+
+
+.theme-light {
+  background: #ffffff;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+
+.theme-dark {
+  background: #0f172a;
+  color: #e5e7eb;
+  min-height: 100vh;
+}
+
+
+.theme-ocean {
+  background: linear-gradient(to bottom, #0ea5e9, #0f172a);
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+
+.theme-light .card {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+
+.theme-dark .card {
+  background: #1e293b;
+  color: #e5e7eb;
+}
+
+
+.theme-ocean .card {
+  background: rgba(255,255,255,0.1);
+  color: #ffffff;
+}

@@ -1,7 +1,24 @@
+import { useTheme } from "../context/ThemeContext";
+
 export default function ContactInfo() {
+  const { theme } = useTheme();
+
+  const isDark = theme === "dark";
+  const isOcean = theme === "ocean";
+
+  const cardBg = isDark
+    ? "#1e293b"
+    : isOcean
+    ? "rgba(255, 255, 255, 0.12)"
+    : "#ffffff";
+
+  const borderColor = isDark ? "#334155" : isOcean ? "#7dd3fc" : "#e5e7eb";
+  const headingColor = isDark || isOcean ? "#f8fafc" : "#0f172a";
+  const textColor = isDark || isOcean ? "#cbd5e1" : "#475569";
+
   const buttonStyle = (bgColor: string) => ({
     display: "flex",
-    alignItems: "center",
+    alignItems: "center" as const,
     gap: "8px",
     textDecoration: "none",
     backgroundColor: bgColor,
@@ -19,28 +36,26 @@ export default function ContactInfo() {
         gap: "24px",
       }}
     >
-
       <div
         style={{
-          backgroundColor: "#ffffff",
-          border: "1px solid #e5e7eb",
+          backgroundColor: cardBg,
+          border: `1px solid ${borderColor}`,
           borderRadius: "20px",
           padding: "28px",
           boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
-          color: "#0f172a",
+          color: headingColor,
         }}
       >
-        <h2 style={{ marginTop: 0, marginBottom: "12px" }}>
+        <h2 style={{ marginTop: 0, marginBottom: "12px", color: headingColor }}>
           Let’s Connect
         </h2>
 
-        <p style={{ color: "#475569", lineHeight: 1.8, marginBottom: 0 }}>
+        <p style={{ color: textColor, lineHeight: 1.8, marginBottom: 0 }}>
           Thank you for visiting my personal website. I’m always open to
           friendly conversations, learning opportunities, collaborations, and
           feedback about my work.
         </p>
       </div>
-
 
       <div
         style={{
@@ -57,30 +72,29 @@ export default function ContactInfo() {
           <div
             key={item.title}
             style={{
-              backgroundColor: "#ffffff",
-              border: "1px solid #e5e7eb",
+              backgroundColor: cardBg,
+              border: `1px solid ${borderColor}`,
               borderRadius: "18px",
               padding: "22px",
               textAlign: "center",
-              color: "#0f172a",
+              color: headingColor,
             }}
           >
-            <h3 style={{ marginTop: 0 }}>{item.title}</h3>
-            <p style={{ margin: 0, color: "#475569" }}>{item.value}</p>
+            <h3 style={{ marginTop: 0, color: headingColor }}>{item.title}</h3>
+            <p style={{ margin: 0, color: textColor }}>{item.value}</p>
           </div>
         ))}
       </div>
 
-
       <div
         style={{
-          backgroundColor: "#ffffff",
-          border: "1px solid #e5e7eb",
+          backgroundColor: cardBg,
+          border: `1px solid ${borderColor}`,
           borderRadius: "18px",
           padding: "22px",
         }}
       >
-        <h3 style={{ marginTop: 0, color: "#0f172a" }}>
+        <h3 style={{ marginTop: 0, color: headingColor }}>
           Connect With Me
         </h3>
 
@@ -92,10 +106,10 @@ export default function ContactInfo() {
             marginTop: "12px",
           }}
         >
-
           <a
             href="https://github.com/Ronan245"
             target="_blank"
+            rel="noreferrer"
             style={buttonStyle("#111827")}
           >
             <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
@@ -104,10 +118,10 @@ export default function ContactInfo() {
             GitHub
           </a>
 
-
           <a
             href="https://facebook.com/rjga245"
             target="_blank"
+            rel="noreferrer"
             style={buttonStyle("#1877f2")}
           >
             <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
@@ -115,7 +129,6 @@ export default function ContactInfo() {
             </svg>
             Facebook
           </a>
-
 
           <a
             href="mailto:ronanjustinega44@email.com"
